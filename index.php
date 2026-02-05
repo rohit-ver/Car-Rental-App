@@ -1,0 +1,488 @@
+<?php
+require_once 'includes/session_config.php';
+$car_lists = include 'includes/available_cars.php';
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+          <a class="navbar-brand" href="index.php">Car<span>Rental</span></a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+            <span class="oi oi-menu"></span> Menu
+          </button>
+
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+
+              <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
+              <li class="nav-item"><a href="services.php" class="nav-link">Services</a></li>
+              <li class="nav-item"><a href="pricing.php" class="nav-link">Pricing</a></li>
+              <li class="nav-item"><a href="car.php" class="nav-link">Cars</a></li>
+              <li class="nav-item"><a href="blog.php" class="nav-link">Blog</a></li>
+              <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
+
+              <?php if(isset($_SESSION['userid'])){ ?>
+
+                <!-- Logged-in user -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+                    👤 <?php echo htmlspecialchars($_SESSION['name']); ?>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="profile.php">Profile</a>
+                    <a class="dropdown-item" href="logout.php">Logout</a>
+                  </div>
+                </li>
+
+              <?php } else { ?>
+
+                <!-- Guest -->
+                <li class="nav-item"><a href="signup.php" class="nav-link">SignUp</a></li>
+                <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
+
+              <?php } ?>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- END nav -->
+    
+    <div class="hero-wrap ftco-degree-bg" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+          <div class="col-lg-8 ftco-animate">
+          	<div class="text w-100 text-center mb-md-5 pb-md-5">
+	            <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
+	            <p style="font-size: 18px;">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts</p>
+	            <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
+	            	<div class="icon d-flex align-items-center justify-content-center">
+	            		<span class="ion-ios-play"></span>
+	            	</div>
+	            	<div class="heading-title ml-5">
+		            	<span>Easy steps for renting a car</span>
+	            	</div>
+	            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <section class="ftco-section ftco-no-pt bg-light">
+      <div class="container">
+    		<div class="row no-gutters">
+          <div class="col-md-12	featured-top">
+    				<div class="row no-gutters">
+	  					<div class="col-md-12 d-flex align-items-center">
+	  						<div class="services-wrap rounded-right w-100">
+	  							<h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
+	  							<div class="row d-flex mb-4">
+					          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+					            <div class="services w-100 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+				              	<div class="text w-100">
+					                <h3 class="heading mb-2">Choose Your Pickup Location</h3>
+				                </div>
+					            </div>      
+					          </div>
+					          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                      <div class="services w-100 text-center">
+				              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+				              	<div class="text w-100">
+					                <h3 class="heading mb-2">Select the Best Deal</h3>
+					              </div>
+					            </div>      
+					          </div>
+					          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                      <div class="services w-100 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+				              	<div class="text w-100">
+                          <h3 class="heading mb-2">Reserve Your Rental Car</h3>
+					              </div>
+					            </div>      
+					          </div>
+					        </div>
+                  <?php if (isset($_SESSION['userid'])) { ?>
+                  <?php if (!empty($car_lists)) { ?>
+                 <?php $car_list = $car_lists[0]['id']; ?>  <!--it help to pass only one id so that no show double button-->
+					        <p><a href="Book_car.php?car_id=<?= $car_list; ?>" class="btn btn-primary py-3 px-4 center-btn">Reserve Your Perfect Car</a></p>
+	  						<?php }else{ ?>
+                    <p class="text-danger text-center">
+                      All cars are currently booked
+                    </p>
+                <?php } ?>
+                <?php } else { ?>
+                    <!-- Login nahi hai -->
+                    <a href="login.php"
+                      class="btn btn-warning py-3 px-4 center-btn">
+                      Login to Book
+                    </a>
+                <?php } ?>
+
+                </div>
+	  					</div>
+	  				</div>
+          </div>
+        </div>
+      </section>
+      
+      
+     <section class="ftco-section ftco-no-pt bg-light">
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+        <span class="subheading">What we offer</span>
+        <h2 class="mb-2">Featured Vehicles</h2>
+      </div>
+    </div>
+
+    <?php if (!empty($car_lists)) { ?>
+      <div class="carousel-car owl-carousel">
+
+        <?php foreach ($car_lists as $car_list) { ?>
+          <div class="item">
+            <div class="car-wrap rounded ftco-animate">
+
+              <div class="img rounded d-flex align-items-end"
+                style="background-image: url('images/uploads/<?= $car_list['image']; ?>'); height:220px;">
+              </div>
+
+              <div class="text p-3">
+                <h2 class="mb-1">
+                  <?= htmlspecialchars($car_list['car_name']); ?>
+                </h2>
+
+                <div class="d-flex mb-2">
+                  <span class="cat">
+                    <?= htmlspecialchars($car_list['brand']); ?>
+                  </span>
+
+                  <p class="price ml-auto mb-0 text-right">
+                    <small>Self:</small> ₹<?= $car_list['self_drive_price']; ?><br>
+                    <small>Driver:</small> ₹<?= $car_list['with_driver_price']; ?> <span>/day</span>
+                  </p>
+                </div>
+
+                <div class="d-flex">
+                  <a href="Book_car.php?car_id=<?= $car_list['id']; ?>"
+                    class="btn btn-primary py-2 mr-2">
+                    Book Now
+                  </a>
+
+                  <a href="car_details.php?id=<?= $car_list['id']; ?>"
+                    class="btn btn-secondary py-2">
+                    Details
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+
+      </div>
+    <?php } else { ?>
+      <p class="text-center"><b>No cars available</b></p>
+    <?php } ?>
+
+  </div>
+</section>
+
+
+    <section class="ftco-section ftco-about">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/about.png);">
+					</div>
+					<div class="col-md-6 wrap-about ftco-animate">
+	          <div class="heading-section heading-section-white pl-md-5">
+	          	<span class="subheading">About us</span>
+	            <h2 class="mb-4">Welcome to Carbook</h2>
+
+	            <p>From the royal cities of Jaipur to the golden deserts of Jaisalmer, Rajasthan offers a timeless travel experience where history, culture, and scenic routes come together to make every journey memorable.</p>
+	            <p>While traveling through Rajasthan, every journey tells a story — from royal palaces and historic forts to desert roads and colorful bazaars. Each destination offers a unique experience, making your travel safe, comfortable, and truly unforgettable with our reliable car rental services.</p>
+	            <p><a href="#" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
+	          </div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Services</span>
+            <h2 class="mb-3">Our Latest Services</h2>
+          </div>
+        </div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="services services-2 w-100 text-center">
+            	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wedding-car"></span></div>
+            	<div class="text w-100">
+                <h3 class="heading mb-2">Wedding Ceremony</h3>
+                <p>Reliable car rentals for a smooth journey across Rajasthan.</p>
+              </div>
+            </div>
+					</div>
+					<div class="col-md-3">
+						<div class="services services-2 w-100 text-center">
+            	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
+            	<div class="text w-100">
+                <h3 class="heading mb-2">City Transfer</h3>
+                <p>Reliable car rentals for comfortable travel across Rajasthan’s cities and heritage destinations.</p>
+              </div>
+            </div>
+					</div>
+					<div class="col-md-3">
+						<div class="services services-2 w-100 text-center">
+            	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
+            	<div class="text w-100">
+                <h3 class="heading mb-2">Airport Transfer</h3>
+                <p>On-time airport pickup and drop services across Jaipur and major cities of Rajasthan.</p>
+              </div>
+            </div>
+					</div>
+					<div class="col-md-3">
+						<div class="services services-2 w-100 text-center">
+            	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
+            	<div class="text w-100">
+                <h3 class="heading mb-2">Whole City Tour</h3>
+                <p>AEnjoy a complete city tour covering major attractions and heritage spots across Rajasthan.</p>
+              </div>
+            </div>
+					</div>
+				</div>
+			</div>
+		</section>
+    <!-- create a form to add a rent car by Owner -->
+		<section class="ftco-section ftco-intro" style="background-image: url(images/bg_1.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row justify-content-end">
+					<div class="col-md-6 heading-section heading-section-white ftco-animate">
+            <h2 class="mb-3">List Your Car & Start Earning</h2>
+            <p>Have a car? Earn money by renting it on our platform.</p>
+            <a href="signup.php" class="btn btn-primary btn-lg">Earn With Your Car</a>
+          </div>
+				</div>
+			</div>
+		</section>
+
+
+    <section class="ftco-section testimony-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Testimonial</span>
+            <h2 class="mb-3">Happy Clients</h2>
+          </div>
+        </div>
+		<!-- Add clints for form  -->
+              <div class="row ftco-animate">
+              <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel ftco-owl">
+                <div class="item">
+                  <div class="testimony-wrap rounded text-center py-4 pb-5">
+                  <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
+                  </div>
+                  <div class="text pt-4">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Roger Scott</p>
+                    <span class="position">Marketing Manager</span>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- Add Blog form form -->
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Blog</span>
+            <h2>Recent Blog</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+              </a>
+              <div class="text pt-4">
+              	<div class="meta mb-3">
+                  <div><a href="#">Oct. 29, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+                <p><a href="#" class="btn btn-primary">Read more</a></p>
+              </div>
+            </div>
+          </div>
+    </section>	
+
+    <section class="ftco-counter ftco-section img bg-light" id="section-counter">
+			<div class="overlay"></div>
+    	<div class="container">
+    		<div class="row">
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+              <div class="text text-border d-flex align-items-center">
+                <strong class="number" data-number="6">0</strong>
+                <span>Year <br>Experienced</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+              <div class="text text-border d-flex align-items-center">
+                <strong class="number" data-number="65">0</strong>
+                <span>Total <br>Cars</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+              <div class="text text-border d-flex align-items-center">
+                <strong class="number" data-number="1200">0</strong>
+                <span>Happy <br>Customers</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+              <div class="text d-flex align-items-center">
+                <strong class="number" data-number="3">0</strong>
+                <span>Total <br>Branches</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    	</div>
+    </section>	
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>Rental</span></a></h2>
+              <p>Experience Rajasthan like never before. 
+                  From Jaipur, Udaipur, Jodhpur to Jaisalmer, 
+                  we offer trusted car and bike rentals for every destination. 
+                  Travel freely, comfortably, and discover the royal heritage of Rajasthan at your own pace.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.php" class="py-2 d-block">About</a></li>
+                <li><a href="services.php" class="py-2 d-block">Services</a></li>
+                <li><a href="#" class="py-2 d-block">Term and Conditions</a></li>
+                <li><a href="pricing.php" class="py-2 d-block">Best Price Guarantee</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Customer Support</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">FAQ</a></li>
+                <li><a href="#" class="py-2 d-block">Payment Option</a></li>
+                <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Office No. 203, Business Hub, Jaipur, Rajasthan, India</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">91+ 987 232 3482</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@Gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
